@@ -1,0 +1,8 @@
+{
+  "name": "ionic-payroll",
+  "app_id": "40c17f0e",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
