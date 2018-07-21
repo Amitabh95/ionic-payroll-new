@@ -1,0 +1,49 @@
+<!--
+  Generated template for the AdminApproveLeavePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Approve Leave</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <!-- <ion-row *ngIf="data">
+            <ion-col>Name</ion-col>
+            <ion-col>From</ion-col>
+            <ion-col>To</ion-col>
+            <ion-col>Reason</ion-col>
+            <ion-col>Approve</ion-col>
+            <ion-col>Reject</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let leave of data">
+            <ion-col>{{leave._userId.name.first}}</ion-col>
+            <ion-col>{{leave.startDate | date: 'dd-MMM-yyyy'}}</ion-col>
+            <ion-col>{{leave.endDate  | date: 'dd-MMM-yyyy'}}</ion-col>
+            <ion-col>{{leave.reason}}</ion-col>
+            <ion-col>
+                <button [hidden]="leave.isRejected"  click="changeStatus('approved',leave._id)">Approve</button>
+            </ion-col>
+            <ion-col>
+                <button [hidden]="leave.isApproved" click="changeStatus('rejected',leave._id)">Reject</button>
+            </ion-col>
+    </ion-row> -->
+
+    <ion-list>
+        <button ion-item *ngFor="let leave of newData" (click)="presentApproveLeaveModal(leave._userId.name.first,leave.startDate, leave.endDate, leave.reason , leave._id,leave.isRejected,leave.isApproved)">
+            <ion-label>{{ leave._userId.name.first }}</ion-label>
+            <!-- <ion-label>{{leave.startDate | date: 'dd-MMM-yyyy'}}</ion-label>
+            <ion-label>{{leave.endDate  | date: 'dd-MMM-yyyy'}}</ion-label> -->
+            <ion-label>{{leave.reason}}</ion-label>
+            <ion-label *ngIf="leave.isRejected">Rejected</ion-label>
+            <ion-label *ngIf="leave.isApproved">Appoved</ion-label>
+            <ion-label *ngIf="!leave.isApproved && !leave.isRejected">Pending</ion-label>      
+        </button>  
+    </ion-list>
+
+</ion-content>

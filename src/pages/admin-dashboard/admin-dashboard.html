@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+        <ion-buttons menuToggle ion-button left>
+                <ion-icon name='menu'></ion-icon>
+            </ion-buttons>
+
+            <ion-title class="alignment">Admin Dashboard</ion-title>
+    
+            <ion-buttons end>
+                    <button ion-button (click)="logout()">Logout</button>
+            </ion-buttons>     
+    <!-- <ion-toolbar>
+
+               
+          </ion-toolbar> -->
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content text-center class="cards-bg">
+    <ion-card>
+        <div *ngIf="(profilePicture === null)">
+            <img class="image_area" src='../../assets/imgs/resized image.png'/> 
+        </div>
+        <div *ngIf="!(profilePicture === null)">
+                <img class="image_area" src="{{profilePicture}}"/> 
+        </div>
+        <ion-card-content>
+            <ion-card-title>
+              {{name}}
+            </ion-card-title>
+            <p>
+              {{designation}}
+            </p>
+        </ion-card-content>
+        <button ion-button round (click)="goToCreateAccount()">Create Account</button>
+        <button ion-button round (click)="goToApproveLeaves()">Approve Leaves</button>
+        <button ion-button round (click)="goToCreatePayslips()">Create Payslips</button>
+        <button ion-button round (click)="goToPayEmployee()">Pay Employees</button><br>
+        <button ion-button round (click)="goToDeleteUser()">Delete User</button>
+        <button ion-button round (click)="goToEditProfile()">Edit Profile</button>
+        <button ion-button round (click)="goToOfflineVideo()">Offline Video</button>
+        <button ion-button round (click)="goToOfflineVideo2()">Offline Video 2</button>
+    </ion-card>
+</ion-content>

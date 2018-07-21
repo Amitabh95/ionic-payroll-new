@@ -1,0 +1,83 @@
+<!--
+  Generated template for the EmpPayslipPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>View Payslip</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+        <form [formGroup]="viewPayslipForm"  >
+    <ion-list>
+
+        <ion-item>
+            <ion-label>Month</ion-label>
+            <ion-select formControlName="month">
+                <ion-option value="01">January</ion-option>
+                <ion-option value="02">February</ion-option>
+                <ion-option value="03">March</ion-option>
+                <ion-option value="04">April</ion-option>
+                <ion-option value="05">May</ion-option>
+                <ion-option value="06">June</ion-option>
+                <ion-option value="07">July</ion-option>
+                <ion-option value="08">August</ion-option>
+                <ion-option value="09">September</ion-option>
+                <ion-option value="10">October</ion-option>
+                <ion-option value="11">November</ion-option>
+                <ion-option value="12">December</ion-option>
+            </ion-select>
+        </ion-item>
+        <div text-center *ngIf="viewPayslipForm.controls.month.invalid && viewPayslipForm.controls.month.dirty">
+                Please select month.
+              </div>
+                
+        <ion-item>
+            <ion-label>Year</ion-label>
+            <ion-select formControlName="year">
+                <ion-option>2010</ion-option>
+                <ion-option>2011</ion-option>
+                <ion-option>2012</ion-option>
+                <ion-option>2013</ion-option>
+                <ion-option>2014</ion-option>
+                <ion-option>2015</ion-option>
+                <ion-option>2016</ion-option>
+                <ion-option>2017</ion-option>
+                <ion-option>2018</ion-option>
+                <ion-option>2019</ion-option>
+            </ion-select>
+        </ion-item>
+        <div text-center *ngIf="viewPayslipForm.controls.year.invalid && viewPayslipForm.controls.year.dirty">
+                Please select year.
+        </div>
+
+    </ion-list>
+
+    <div padding>
+        <button ion-button color="primary"
+        [disabled]="viewPayslipForm.controls.month.invalid || viewPayslipForm.controls.year.invalid"
+        type="submit" (click)="showPayslips();" block>Show Payslip</button>
+    </div>
+</form>
+    <ion-card *ngIf="tempData">
+
+        <ion-card-header text-center>
+         <b>Payslip of {{tempData.month}}</b> 
+        </ion-card-header>
+      
+        <ion-card-content>
+              <ion-label>Base Salary : {{tempData._userId.baseSalary}}</ion-label>
+              <ion-label>DA: {{tempData.da}}</ion-label>
+              <ion-label>HRA: {{tempData.hra}}</ion-label>
+              <ion-label>Medical: {{tempData.medical}}</ion-label>
+              <ion-label>Total: {{tempData.totalAmount}}</ion-label>
+        </ion-card-content>
+      
+      </ion-card>
+</ion-content>

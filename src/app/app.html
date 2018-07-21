@@ -1,1 +1,95 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<!-- <ion-menu id="admin" [content]="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+        <ion-list>
+          1. Create Account
+        </ion-list>
+        <ion-list>
+          2. Approve Leave
+        </ion-list>
+        <ion-list>
+          3. Create Payslips
+        </ion-list>
+        <ion-list>
+          4. Pay Employees
+        </ion-list>
+        <ion-list>
+          5. Delete User
+        </ion-list>
+    </ion-content>
+  
+  </ion-menu>
+   -->
+  <!-- <ion-menu id="emp" [content]="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+        <ion-list>
+          1. Apply For Leave
+        </ion-list>
+        <ion-list>
+          2. Leave Status
+        </ion-list>
+        <ion-list>
+          3. View Payslips
+        </ion-list>
+    </ion-content>
+  
+  </ion-menu> -->
+  
+  
+  <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+
+  <ion-menu [content]="content">
+    <ion-header>
+        <ion-navbar>
+            <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>List</ion-title>
+          </ion-navbar>
+    </ion-header>
+  
+    <ion-content>
+        <ion-row class="logo-row">
+            <ion-col></ion-col>
+            <ion-col width-67 align = "center">
+              <img src="../../assets/imgs/user.jpg" alt = "user">
+            </ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+          <h3 align = "center">{{name}}</h3>
+          <h4 align = "center" >{{desg}}</h4>
+          <button ion-button color = "secondary" (click) = "editProfile()">Edit Profile</button>
+          <hr>
+      <ion-list>
+        <div *ngIf = "isAdmin">
+              <button menuClose ion-item *ngFor="let p of adminPages" (click)="openPage(p)">
+                {{p.title}}
+              </button>
+        </div>
+        <div *ngIf = "!isAdmin">
+            <button menuClose ion-item *ngFor="let p of empPages" (click)="openPage(p)">
+                {{p.title}}
+              </button>
+        </div>
+  <!-- 
+        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          {{p.title}}
+        </button> -->
+      </ion-list>
+    </ion-content>
+  
+  </ion-menu>
+  
+  <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,0 +1,33 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Leave Status</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-label><b>Balance</b></ion-label>
+  <ion-label>Casual Leave: {{cl}}</ion-label>
+  <ion-label>Privileged Leave: {{pl}}</ion-label>
+    <ion-row *ngIf="data">
+        <ion-col><b>Applied</b></ion-col>
+        <ion-col><b>From</b></ion-col>
+        <ion-col><b>To</b></ion-col>
+        <ion-col><b>Reason</b></ion-col>
+        <ion-col><b>Approved</b></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let leave of data"> 
+        <ion-col>{{leave.requestDate | date: 'dd-MMM-yyyy'}}</ion-col>
+        <ion-col>{{leave.startDate | date: 'dd-MMM-yyyy'}}</ion-col>
+        <ion-col>{{leave.endDate | date: 'dd-MMM-yyyy'}}</ion-col>
+        <ion-col>{{leave.reason}}</ion-col>
+        <ion-col>
+              <ion-icon ios="ios-done-all" md="md-done-all" *ngIf="leave.isApproved && !leave.isRejected">Approved</ion-icon>
+              <ion-icon ios="ios-close" md="md-close" *ngIf="leave.isRejected && !leave.isApproved"> Rejected</ion-icon>
+              <ion-icon ios="ios-stopwatch" md="md-stopwatch" *ngIf="!leave.isApproved && !leave.isRejected"> Pending</ion-icon>
+        </ion-col>
+    </ion-row>
+</ion-content>

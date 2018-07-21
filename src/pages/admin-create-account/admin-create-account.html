@@ -1,0 +1,96 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Create Account</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  <ion-content padding>
+      <form [formGroup]="createAccountForm"  >
+          <ion-list>
+            <ion-item>
+              <ion-label>First Name</ion-label>
+                    <ion-input type="text" formControlName="firstName"></ion-input>  
+            </ion-item>
+                <div text-center *ngIf="createAccountForm.controls['firstName'].invalid && createAccountForm.controls['firstName'].dirty">
+                  Please enter a valid first name.
+                </div>
+          <ion-item>
+            <ion-label>Last Name</ion-label>
+            <ion-input type="text" formControlName="lastName"></ion-input>
+          </ion-item>
+          <div text-center *ngIf="createAccountForm.controls.lastName.invalid && createAccountForm.controls.lastName.dirty">
+              Please enter a valid last name.
+            </div>
+  
+          <ion-item>
+              <ion-label>Email</ion-label>
+              <ion-input type="text" formControlName="email"></ion-input>
+          </ion-item>
+          <div text-center *ngIf="createAccountForm.controls.email.invalid && createAccountForm.controls.email.dirty">
+              Please enter a valid email.
+            </div>
+      
+          <ion-item>
+            <ion-label>Designation</ion-label>
+            <ion-select formControlName="Designation">
+              <ion-option>CEO</ion-option>
+              <ion-option>Labour</ion-option>
+              <ion-option>Team Leader</ion-option>
+              <ion-option>Intern</ion-option>
+            </ion-select>
+          </ion-item>
+          <div text-center *ngIf="createAccountForm.controls.Designation.invalid && createAccountForm.controls.Designation.dirty">
+              Please select the designation.
+            </div>
+  
+          <ion-item>
+              <ion-label>Casual Leave</ion-label>
+              <ion-input type="number" formControlName="casualLeave"></ion-input>
+          </ion-item>
+          <div text-center *ngIf="createAccountForm.controls.casualLeave.invalid && createAccountForm.controls.casualLeave.dirty">
+              Please enter the value of Casual Leave.
+          </div>
+  
+          <ion-item>
+              <ion-label>Privilege Leave</ion-label>
+              <ion-input type="number" formControlName="privilegeLeave"></ion-input>
+          </ion-item>
+          <div text-center *ngIf="createAccountForm.controls.privilegeLeave.invalid && createAccountForm.controls.privilegeLeave.dirty">
+              Please enter the value of Privilege Leave.
+            </div>
+  
+          <ion-item>
+              <ion-label>Base Salary</ion-label>
+              <ion-input type="number" formControlName="baseSalary"></ion-input>
+          </ion-item>
+          <div text-center *ngIf="createAccountForm.controls.baseSalary.invalid && createAccountForm.controls.baseSalary.dirty">
+              Please enter the value of Base Salary.
+            </div>
+  
+          <ion-item>
+              <ion-label>Address</ion-label>
+              <ion-textarea type="text" formControlName="address"></ion-textarea>
+          </ion-item>
+          <div text-center *ngIf="createAccountForm.controls.address.invalid && createAccountForm.controls.address.dirty">
+              Please enter the address.
+            </div>
+      
+        </ion-list>
+      
+        <div padding>
+          <button ion-button color="primary" type="submit" 
+          [disabled]= "createAccountForm.controls.firstName.invalid ||
+          createAccountForm.controls.lastName.invalid || 
+          createAccountForm.controls.email.invalid ||
+          createAccountForm.controls.Designation.invalid ||
+          createAccountForm.controls.casualLeave.invalid ||
+          createAccountForm.controls.privilegeLeave.invalid ||
+          createAccountForm.controls.baseSalary.invalid ||
+          createAccountForm.controls.address.invalid"
+
+          (click)="createAccount();" block>Create Account</button>
+        </div>
+      </form>
+  </ion-content>
+  

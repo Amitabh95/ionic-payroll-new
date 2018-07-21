@@ -1,0 +1,58 @@
+<!--
+  Generated template for the EditProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-content text-center class="cards-bg">
+        <ion-card>
+          <!-- <div *ngIf="!(finalImageLink)">
+              <img class="image_area" src='../../assets/imgs/resized image.png'/>
+          </div>
+          <div *ngIf="(finalImageLink)">
+              <img src="{{finalImageLink}}" alt="Ionic File" class="image_area" />
+          </div> -->
+          <div *ngIf="(profilePicture === null)">
+            <img class="image_area" src='../../assets/imgs/resized image.png'/> 
+        </div>
+        <div *ngIf="(profilePicture !== null)&&((finalImageLink === null)||(finalImageLink === undefined))">
+                <img class="image_area" src="{{profilePicture}}"/> 
+                <button ion-button (click)="downloadToGallery();">Save in Gallery</button>
+                <button ion-button (click)="downloadToAppData()">Save in Native Storage</button>
+        </div>
+        <div *ngIf="(finalImageLink)">
+              <img class="image_area" src="{{finalImageLink}}" /> 
+        </div>
+            <a (click)="presentActionSheet();">
+              Change Profile Picture
+              <ion-icon name="create"></ion-icon>
+            </a>
+            <br>
+            <button *ngIf="upload" ion-button (click)="uploadFile()">Upload New Picture</button>
+            
+
+            <ion-card-content>
+                <ion-card-title>
+                  {{name}}
+                </ion-card-title>
+                <p>
+                  {{designation}}
+                </p>
+                <p>
+                  {{email}} 
+                </p>
+            </ion-card-content>
+        </ion-card>
+    </ion-content>
+
+</ion-content>

@@ -1,14 +1,39 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar hideBackButton="true">
     <ion-title>
-      Ionic Blank
+      Login | Payroll Management System
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <form [formGroup]="loginForm">
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+            <ion-input type="text" formControlName="username"></ion-input>
+    </ion-item>
+    <div text-center *ngIf="loginForm.controls.username.invalid && loginForm.controls.username.dirty">
+        Please enter the correct email.
+    </div>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <div text-center *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.dirty">
+       Please enter the password.
+    </div>
+
+    <ion-item text-center>
+        <a (click)="goToForgetPassword();">Forget Password?</a>
+    </ion-item>
+  </ion-list>
+  <div>
+    <button ion-button color="primary" [disabled]= "loginForm.controls.username.invalid ||
+    loginForm.controls.password.invalid" (click)="signIn();" block>Sign In</button>
+  </div>
+</form>
+
 </ion-content>

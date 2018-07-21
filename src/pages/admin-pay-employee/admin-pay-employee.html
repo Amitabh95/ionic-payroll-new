@@ -1,0 +1,34 @@
+<!--
+  Generated template for the AdminPayEmployeePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Pay Employee</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-row *ngIf="data" class="table table-bordered table-striped table-hover test-table" id="user-table1">
+              <ion-col><b>Name</b></ion-col>
+              <ion-col><b>Month</b></ion-col>
+              <ion-col><b>Status</b></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let payslips of newData">
+         
+            <ion-col>{{payslips._userId.name.first}}</ion-col>
+            <ion-col>{{payslips.month}}</ion-col>
+            <ion-col *ngIf="payslips.isPaid" class="text-center pr-done">Done</ion-col>
+            <ion-col *ngIf="!payslips.isPaid" class="text-center">
+                    <button ion-button (click)="presentProfileModal(payslips._id)">
+                        Pending
+                    </button>
+            </ion-col>
+      </ion-row>
+
+</ion-content>
